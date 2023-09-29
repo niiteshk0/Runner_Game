@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
 
-    float jumpForce = 15f;
+    public float jumpForce = 15f;
     float movSpeed = 7f;
     float dirX;
     public LayerMask jumpableGround;
