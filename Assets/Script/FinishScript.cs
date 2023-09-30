@@ -21,12 +21,13 @@ public class FinishScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            Invoke("LevelComplete", 2f);
             LevelComplete();
         }
     }
 
     void LevelComplete()
     {
-        SceneManager.LoadScene(SceneManager.LoadScene().bui)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
