@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sprite;
-    BoxCollider2D coll;
+    CapsuleCollider2D coll;
 
         
     public AudioSource jumpSoundEffect;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        coll = GetComponent<BoxCollider2D>();
+        coll = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
