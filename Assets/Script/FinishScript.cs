@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class FinishScript : MonoBehaviour
 {
-   
+
+    public AudioSource finishSoundEffect;
+    bool levelComplete = false;
     void Start()
     {
         
@@ -19,10 +21,11 @@ public class FinishScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && !levelComplete)
         {
+            finishSoundEffect.Play();
+            levelComplete = true;
             Invoke("LevelComplete", 2f);
-            LevelComplete();
         }
     }
 

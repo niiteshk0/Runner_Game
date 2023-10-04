@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer sprite;
     BoxCollider2D coll;
 
+        
+    public AudioSource jumpSoundEffect;
+    public AudioSource fruitsCollectEffect;
+    public AudioSource deathSoundEffect;
+
     enum MovementState { idle, running, jumping, falling}
 
 
@@ -35,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown("space") && isGrounded())
         {
+            jumpSoundEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
@@ -83,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("cherry"))
         {
+            fruitsCollectEffect.Play();
             Destroy(collision.gameObject);
         }
     }
@@ -97,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
      
     void Die()
     {
+        deathSoundEffect.Play();
         rb.bodyType = RigidbodyType2D.Static;   // for stop the player movement after collid with Trap 
         anim.SetTrigger("death");
         //Invoke("RestartLevel", 2f);
