@@ -32,17 +32,17 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<CapsuleCollider2D>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        dirX = Input.GetAxis("Horizontal");
+        //dirX = Input.GetAxis("Horizontal");   for touch and keyboard
         rb.velocity = new Vector2(dirX * movSpeed, rb.velocity.y);
 
-        if(Input.GetKeyDown("space") && isGrounded())
-        {
-            jumpSoundEffect.Play();
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
+        //if(Input.GetKeyDown("space") && isGrounded())
+        //{
+        //    jumpSoundEffect.Play();
+        //    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        //}
 
         AnimationUpdate();
     }
@@ -119,5 +119,34 @@ public class PlayerMovement : MonoBehaviour
     void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void onPointerEnter_Right()
+    {
+        dirX = 1;
+    }
+
+    public void onPointerExit()
+    {
+        dirX = 0;
+    }
+
+    public void onPointerEnter_Left()
+    {
+        dirX = -1;
+    }
+
+    public void onPointerUp()
+    {
+        if(isGrounded())
+        {
+            jumpSoundEffect.Play();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+    }
+
+    public void onPointerDown()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
     }
 }
