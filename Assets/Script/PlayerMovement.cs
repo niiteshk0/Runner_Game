@@ -92,6 +92,12 @@ public class PlayerMovement : MonoBehaviour
             fruitsCollectEffect.Play();
             Destroy(collision.gameObject);
         }
+
+        if(collision.gameObject.CompareTag("orange"))
+        {
+            fruitsCollectEffect.Play();
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
